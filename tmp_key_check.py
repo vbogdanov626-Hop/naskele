@@ -1,0 +1,11 @@
+import re, pathlib
+html = pathlib.Path('index.html').read_text(encoding='utf8')
+js = pathlib.Path('script.js').read_text(encoding='utf8')
+regex = re.compile(r'data-i18n(?:-|\w+)?="([\w]+)"')
+keys = set(regex.findall(html))
+jsRegex = re.compile(r'\b([a-zA-Z0-9_]+)\s*:\s*(?:"[^"]*"|\'[^']*\')')
+jsKeys = set(jsRegex.findall(js))
+missing = sorted(k for k in keys if k not in jsKeys)
+print('HTML keys count:', len(keys))
+print('Missing in JS:', len(missing))
+print('\n'.join(missing))

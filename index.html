@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Християнська церква На скелі - місце віри, надії та любові."
+    />
+    <title data-i18n="pageTitle">На скелі | Християнська церква</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <div class="container nav-wrap">
+        <a
+          href="#top"
+          class="logo"
+          aria-label="На скелі - головна"
+          data-i18n-aria-label="logoAria"
+        >
+          <img src="assets/church-logo.png" alt="Логотип На скелі" class="logo-image" />
+          <span class="logo-text" data-i18n="logoText">На скелі</span>
+        </a>
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="main-nav" data-i18n="menu">
+          Меню
+        </button>
+        <nav id="main-nav" class="main-nav">
+          <a href="#home" data-i18n="navHome">Главная</a>
+          <a href="#about" data-i18n="navAbout">О нас</a>
+          <a href="#services" data-i18n="navServices">Служения</a>
+          <a href="#sermons" data-i18n="navSermons">Проповеди</a>
+          <a href="#contacts" data-i18n="navContacts">Контакты</a>
+        </nav>
+        <div class="lang-switch">
+          <button type="button" class="lang-btn" data-lang="ru">RU</button>
+          <button type="button" class="lang-btn" data-lang="de">DE</button>
+          <button type="button" class="lang-btn active" data-lang="uk">UA</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero section">
+        <div class="hero-overlay"></div>
+        <div class="jesus-corner" aria-hidden="true">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Heinrich_Hofmann_-_Christ_in_Gethsemane.jpg/512px-Heinrich_Hofmann_-_Christ_in_Gethsemane.jpg"
+            alt=""
+          />
+        </div>
+        <div class="container hero-content">
+          <h1 data-i18n="heroTitle">Церковь На Скеле</h1>
+          <p class="hero-quote" data-i18n="heroQuote">«Господь — скала моя, и твердыня моя, и избавитель мой!»</p>
+        </div>
+      </section>
+
+      <section class="section bible-section">
+        <div class="container">
+          <h2 class="section-title reveal" data-i18n="quotesTitle">Библейские цитаты</h2>
+          <div class="quotes-grid">
+            <article class="quote-card reveal">
+              <p data-i18n="quote1">«Господь — скала моя, и твердыня моя, и избавитель мой!»</p>
+              <span data-i18n="quote1Ref">Псалом 18:3</span>
+            </article>
+            <article class="quote-card reveal">
+              <p data-i18n="quote2">«Придите ко Мне, все труждающиеся и обремененные, и Я успокою вас!»</p>
+              <span data-i18n="quote2Ref">Матфея 11:28</span>
+            </article>
+            <article class="quote-card reveal">
+              <p data-i18n="quote3">«Иисус Христос вчера и сегодня и во веки Тот же!»</p>
+              <span data-i18n="quote3Ref">Евреям 13:8</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section about-section">
+        <div class="container">
+          <h2 class="section-title reveal" data-i18n="aboutTitle">О нас</h2>
+          <div class="about-content reveal">
+            <p data-i18n="aboutDesc">
+              Церковь «На Скеле» — это место, где люди находят духовную поддержку, общение и рост в вере. Мы стремимся к тому, чтобы каждый почувствовал любовь Божью и нашел свое место в общине.
+            </p>
+            <h3 data-i18n="aboutHistoryTitle">История нашей церкви</h3>
+            <p data-i18n="aboutHistoryText">
+              Церковь «На Скале» была основана в 2025 году как небольшая молитвенная группа украинских семей в Германии. За эти годы мы выросли в теплую духовную общину, открытую для всех, кто ищет Бога. Наша церковь названа в честь слов Иисуса Христа: «На этой скале Я создам Церковь Мою» (Матфея 16:18), символизируя твердую веру и надежду.
+            </p>
+            <p data-i18n="aboutCommunityText">
+              Сегодня мы — это международная община, объединяющая людей разных национальностей и культур. Мы проводим служения на трех языках и стремимся создавать атмосферу, где каждый чувствует себя дома. Наша церковь активно участвует в социальной работе, помогая нуждающимся и поддерживая миссионерские проекты.
+            </p>
+            <h3 data-i18n="aboutMissionTitle">Миссия и ценности</h3>
+            <p data-i18n="aboutMissionText">
+              Наша миссия — провозглашать Иисуса Христа, строить крепкие отношения с Богом и друг с другом, служить обществу и помогать людям найти смысл жизни во Христе.
+            </p>
+            <ul class="values-list">
+              <li data-i18n="value1">Вера в Божье Слово как основу жизни</li>
+              <li data-i18n="value2">Любовь и служение ближним</li>
+              <li data-i18n="value3">Молитва, общение и единство общины</li>
+              <li data-i18n="value4">Надежда и вдохновение для каждого</li>
+              <li data-i18n="value5">Открытость и гостеприимство</li>
+              <li data-i18n="value6">Рост в вере через изучение Библии</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="sermons" class="section sermons-section">
+        <div class="container">
+          <h2 class="section-title reveal" data-i18n="sermonsTitle">Проповеди</h2>
+          <div class="sermons-grid">
+            <article class="sermon-card reveal">
+              <h3 data-i18n="sermon1Title">Жизнь на твердой скале</h3>
+              <p class="meta" data-i18n="sermon1Meta">14 апреля 2026</p>
+              <p data-i18n="sermon1Desc">О том, как сохранять веру в испытаниях и доверять Богу в повседневной жизни. Учимся строить жизнь на непоколебимом фундаменте.</p>
+              <div class="video-wrap">
+                <iframe
+                  src="https://www.youtube.com/embed/8M6NfMSE8xQ"
+                  title="Проповедь: Жизнь на твердой скале"
+                  data-i18n-title="sermon1VideoTitle"
+                  loading="lazy"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </article>
+            <article class="sermon-card reveal">
+              <h3 data-i18n="sermon2Title">Свет Христов во тьме</h3>
+              <p class="meta" data-i18n="sermon2Meta">7 апреля 2026</p>
+              <p data-i18n="sermon2Desc">Вдохновение оставаться светом для мира, сохраняя мир и любовь в сердце. Как быть свидетелями Христа в современном мире.</p>
+              <div class="video-wrap">
+                <iframe
+                  src="https://www.youtube.com/embed/N5xL5P6oN7I"
+                  title="Проповедь: Свет Христов во тьме"
+                  data-i18n-title="sermon2VideoTitle"
+                  loading="lazy"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </article>
+            <article class="sermon-card reveal">
+              <h3 data-i18n="sermon3Title">Любовь как путь</h3>
+              <p class="meta" data-i18n="sermon3Meta">31 марта 2026</p>
+              <p data-i18n="sermon3Desc">Исследование библейского понимания любви. Как любовь Бога меняет наши отношения и жизнь.</p>
+              <div class="video-wrap">
+                <iframe
+                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                  title="Проповедь: Любовь как путь"
+                  data-i18n-title="sermon3VideoTitle"
+                  loading="lazy"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </article>
+            <article class="sermon-card reveal">
+              <h3 data-i18n="sermon4Title">Молитва и сила веры</h3>
+              <p class="meta" data-i18n="sermon4Meta">24 марта 2026</p>
+              <p data-i18n="sermon4Desc">Как молитва укрепляет нашу веру и помогает преодолевать трудности. Практические советы по развитию молитвенной жизни.</p>
+              <div class="video-wrap">
+                <iframe
+                  src="https://www.youtube.com/embed/jNQXAC9IVRw"
+                  title="Проповедь: Молитва и сила веры"
+                  data-i18n-title="sermon4VideoTitle"
+                  loading="lazy"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="section services-section">
+        <div class="container">
+          <h2 class="section-title reveal" data-i18n="servicesTitle">Служения</h2>
+          <div class="services-grid">
+            <article class="service-card reveal">
+              <h3 data-i18n="service1Title">Воскресное богослужение</h3>
+              <p data-i18n="service1Time">Каждое воскресенье в 16:00</p>
+              <p data-i18n="service1Desc">Общая молитва, поклонение и проповедь Божьего Слова. Присоединяйтесь к нам для вдохновляющего служения с живой музыкой и общением.</p>
+            </article>
+            <article class="service-card reveal">
+              <h3 data-i18n="service2Title">Воскресная школа</h3>
+              <p data-i18n="service2Time">Каждое воскресенье в 16:00</p>
+              <p data-i18n="service2Desc">Библейские уроки для детей и подростков в дружелюбной христианской атмосфере. Развиваем веру через игры, песни и изучение Писания.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+
+      <section id="contacts" class="section contacts-section">
+        <div class="container">
+          <h2 class="section-title reveal" data-i18n="contactsTitle">Контакти</h2>
+          <div class="contacts-grid">
+            <div class="contact-info reveal">
+              <h3 data-i18n="contactInfoTitle">Контактная информация</h3>
+              <p><strong data-i18n="addressLabel">Адрес:</strong> Niemeierstraße 9, 32758 Detmold, Germany</p>
+              <p><strong data-i18n="emailLabel">Email:</strong> info@naskeli.org</p>
+              <p><strong data-i18n="phoneLabel">Телефон:</strong> +4915110057600</p>
+              <p><strong data-i18n="pastorLabel">Пастор:</strong> Александр</p>
+
+              <h3 data-i18n="socialTitle">Мы в социальных сетях</h3>
+              <p data-i18n="socialDesc">Следите за нашими обновлениями, проповедями и мероприятиями в социальных сетях.</p>
+              <div class="social-links">
+                <a href="https://www.tiktok.com/@alexander_karbunar" aria-label="TikTok"><img src="https://sf-static.tiktokcdn.com/obj/eden-sg/uhtyvueh7nulogpoguhm/tiktok-icon2.png" alt="TikTok" style="height: 1em; vertical-align: middle; margin-right: 4px;"> TikTok</a>
+                <a href="https://t.me/karbunar" aria-label="Telegram"><img src="https://store-images.s-microsoft.com/image/apps.55245.13537716651231321.3067a421-6c2f-48a9-b77c-1e38e19146e6.10e2aa49-52ca-4e79-9a61-b6422978afb9" alt="Telegram" style="height: 1em; vertical-align: middle; margin-right: 4px;"> Telegram</a>
+              </div>
+
+              <h3 data-i18n="shareTitle">Поделиться сайтом</h3>
+              <p data-i18n="shareDesc">Помогите другим узнать о нашей церкви.</p>
+              <div class="share-links">
+                <a href="#" onclick="shareOnFacebook()" aria-label="Поделиться в Facebook">📘 Facebook</a>
+                <a href="#" onclick="shareOnTwitter()" aria-label="Поделиться в Twitter">🐦 Twitter</a>
+                <a href="#" onclick="shareOnTelegram()" aria-label="Поделиться в Telegram">📱 Telegram</a>
+              </div>
+
+              <div class="map-wrap">
+                <iframe
+                  src="https://www.google.com/maps?q=Niemeierstra%C3%9Fe+9,+32758+Detmold&output=embed"
+                  title="Карта розташування церкви"
+                  data-i18n-title="mapTitle"
+                  loading="lazy"
+                ></iframe>
+              </div>
+            </div>
+
+            <form class="contact-form reveal" id="contactForm">
+              <h3 data-i18n="contactFormTitle">Зворотний зв'язок</h3>
+              <p data-i18n="contactFormDesc">Есть вопросы? Хотите присоединиться к нам? Напишите нам!</p>
+              <label for="name" data-i18n="nameLabel">Ім'я</label>
+              <input id="name" name="name" type="text" required />
+              <label for="email" data-i18n="emailInputLabel">Email</label>
+              <input id="email" name="email" type="email" required />
+              <label for="message" data-i18n="messageLabel">Повідомлення</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+              <button type="submit" class="btn btn-primary" data-i18n="sendBtn">Надіслати</button>
+              <p class="form-note" id="contactNote" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p data-i18n="footerCopy">© 2026 Християнська церква «На скелі». Усі права захищено.</p>
+        <p class="locale-note" data-i18n="footerLocale">Мова сайту: Українська / Deutsch / Русский</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <div id="cursor"></div>
+  </body>
+</html>
