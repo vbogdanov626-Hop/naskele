@@ -63,6 +63,15 @@ textarea {
   letter-spacing: 0.02em;
 }
 
+.section-intro {
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  color: var(--muted);
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
 .site-header {
   position: fixed;
   top: 0;
@@ -424,6 +433,48 @@ textarea {
   color: var(--accent);
 }
 
+.forum-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 1.4fr) minmax(280px, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.forum-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.forum-item {
+  background: var(--surface);
+  padding: 1.8rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(44, 62, 80, 0.08);
+  box-shadow: var(--shadow);
+}
+
+.forum-item h3 {
+  margin: 0 0 0.75rem;
+  color: var(--accent);
+}
+
+.forum-meta {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.forum-empty {
+  margin: 0;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.label-group {
+  margin-bottom: 0.25rem;
+}
+
 label {
   display: block;
   margin-bottom: 0.5rem;
@@ -511,7 +562,8 @@ textarea {
 @media (max-width: 1024px) {
   .quotes-grid,
   .services-grid,
-  .sermons-grid {
+  .sermons-grid,
+  .forum-grid {
     grid-template-columns: 1fr;
   }
 

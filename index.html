@@ -36,6 +36,7 @@
           <a href="#about" data-i18n="navAbout">О нас</a>
           <a href="#services" data-i18n="navServices">Служения</a>
           <a href="#sermons" data-i18n="navSermons">Проповеди</a>
+          <a href="#testimonials" data-i18n="navTestimonials">Свидетельства</a>
           <a href="#contacts" data-i18n="navContacts">Контакты</a>
         </nav>
         <div class="lang-switch">
@@ -66,16 +67,16 @@
           <h2 class="section-title reveal" data-i18n="quotesTitle">Библейские цитаты</h2>
           <div class="quotes-grid">
             <article class="quote-card reveal">
-              <p data-i18n="quote1">«Господь — скала моя, и твердыня моя, и избавитель мой!»</p>
-              <span data-i18n="quote1Ref">Псалом 18:3</span>
+              <p>«Господь — скала моя, и твердыня моя, и избавитель мой!»</p>
+              <span>Псалом 18:3</span>
             </article>
             <article class="quote-card reveal">
-              <p data-i18n="quote2">«Придите ко Мне, все труждающиеся и обремененные, и Я успокою вас!»</p>
-              <span data-i18n="quote2Ref">Матфея 11:28</span>
+              <p>«Придите ко Мне, все труждающиеся и обремененные, и Я успокою вас!»</p>
+              <span>Матфея 11:28</span>
             </article>
             <article class="quote-card reveal">
-              <p data-i18n="quote3">«Иисус Христос вчера и сегодня и во веки Тот же!»</p>
-              <span data-i18n="quote3Ref">Евреям 13:8</span>
+              <p>«Иисус Христос вчера и сегодня и во веки Тот же!»</p>
+              <span>Евреям 13:8</span>
             </article>
           </div>
         </div>
@@ -119,58 +120,44 @@
               <h3 data-i18n="sermon1Title">Жизнь на твердой скале</h3>
               <p class="meta" data-i18n="sermon1Meta">14 апреля 2026</p>
               <p data-i18n="sermon1Desc">О том, как сохранять веру в испытаниях и доверять Богу в повседневной жизни. Учимся строить жизнь на непоколебимом фундаменте.</p>
-              <div class="video-wrap">
-                <iframe
-                  src="https://www.youtube.com/embed/8M6NfMSE8xQ"
-                  title="Проповедь: Жизнь на твердой скале"
-                  data-i18n-title="sermon1VideoTitle"
-                  loading="lazy"
-                  allowfullscreen
-                ></iframe>
-              </div>
             </article>
             <article class="sermon-card reveal">
               <h3 data-i18n="sermon2Title">Свет Христов во тьме</h3>
               <p class="meta" data-i18n="sermon2Meta">7 апреля 2026</p>
-              <p data-i18n="sermon2Desc">Вдохновение оставаться светом для мира, сохраняя мир и любовь в сердце. Как быть свидетелями Христа в современном мире.</p>
-              <div class="video-wrap">
-                <iframe
-                  src="https://www.youtube.com/embed/N5xL5P6oN7I"
-                  title="Проповедь: Свет Христов во тьме"
-                  data-i18n-title="sermon2VideoTitle"
-                  loading="lazy"
-                  allowfullscreen
-                ></iframe>
-              </div>
+              <p data-i18n="sermon2Desc">Вдохновение оставаться светом для мира, сохраняя мир и любовь в сердце. Как быть свидетелем Христа в современном мире.</p>
             </article>
             <article class="sermon-card reveal">
               <h3 data-i18n="sermon3Title">Любовь как путь</h3>
               <p class="meta" data-i18n="sermon3Meta">31 марта 2026</p>
               <p data-i18n="sermon3Desc">Исследование библейского понимания любви. Как любовь Бога меняет наши отношения и жизнь.</p>
-              <div class="video-wrap">
-                <iframe
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                  title="Проповедь: Любовь как путь"
-                  data-i18n-title="sermon3VideoTitle"
-                  loading="lazy"
-                  allowfullscreen
-                ></iframe>
-              </div>
             </article>
             <article class="sermon-card reveal">
               <h3 data-i18n="sermon4Title">Молитва и сила веры</h3>
               <p class="meta" data-i18n="sermon4Meta">24 марта 2026</p>
               <p data-i18n="sermon4Desc">Как молитва укрепляет нашу веру и помогает преодолевать трудности. Практические советы по развитию молитвенной жизни.</p>
-              <div class="video-wrap">
-                <iframe
-                  src="https://www.youtube.com/embed/jNQXAC9IVRw"
-                  title="Проповедь: Молитва и сила веры"
-                  data-i18n-title="sermon4VideoTitle"
-                  loading="lazy"
-                  allowfullscreen
-                ></iframe>
-              </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" class="section testimonials-section">
+        <div class="container">
+          <h2 class="section-title reveal" data-i18n="forumTitle">Свидетельства</h2>
+          <p class="section-intro reveal" data-i18n="forumIntro">Делитесь свидетельствами, молитвенными нуждами и поддерживайте друг друга.</p>
+          <div class="forum-grid">
+            <div class="forum-list reveal" id="forumList"></div>
+            <form class="contact-form reveal" id="forumForm">
+              <h3 data-i18n="forumFormTitle">Оставьте свое свидетельство</h3>
+              <p data-i18n="forumIntro">Делитесь свидетельствами, молитвенными нуждами и поддерживайте друг друга.</p>
+              <label for="forumAuthor" data-i18n="forumAuthorLabel">Имя</label>
+              <input id="forumAuthor" name="forumAuthor" type="text" required />
+              <label for="forumTopic" data-i18n="forumTopicLabel">Тема</label>
+              <input id="forumTopic" name="forumTopic" type="text" required />
+              <label for="forumMessage" data-i18n="forumMessageLabel">Сообщение</label>
+              <textarea id="forumMessage" name="forumMessage" rows="6" required></textarea>
+              <button type="submit" class="btn btn-primary" data-i18n="forumPostButton">Опубликовать</button>
+              <p class="form-note" id="forumNote" aria-live="polite"></p>
+            </form>
           </div>
         </div>
       </section>

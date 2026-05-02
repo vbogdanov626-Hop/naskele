@@ -20,6 +20,7 @@ const translations = {
     navAbout: "Про нас",
     navServices: "Служіння",
     navSermons: "Проповіді",
+    navTestimonials: "Свідчення",
     navContacts: "Контакти",
     langLabel: "Мова",
     heroTitle: "«Збудую Церкву Мою на цій скелі»",
@@ -33,6 +34,12 @@ const translations = {
     quote2Ref: "Матвія 11:28",
     quote3: "«Ісус Христос учора, і сьогодні, і навіки Той Самий!»",
     quote3Ref: "Євреїв 13:8",
+    quote4: "«Господь - пастир мій; я ні в чому не буду потребувати.»",
+    quote4Ref: "Псалом 23:1",
+    quote5: "«Бо Я знаю думки, які думаю про вас, - думки про мир, а не про лихо...»",
+    quote5Ref: "Єремія 29:11",
+    quote6: "«Все можу в Тому, Хто мене зміцнює.»",
+    quote6Ref: "Филип'ян 4:13",
     aboutTitle: "Про нас",
     aboutDesc: "Церква «На скелі» — це місце, де люди знаходять духовну підтримку, спілкування та зростання у вірі. Ми прагнемо до того, щоб кожен відчув любов Божу та знайшов своє місце у громаді.",
     aboutHistoryTitle: "Історія нашої церкви",
@@ -112,8 +119,9 @@ const translations = {
     footerLocale: "Мова сайту: Українська / Deutsch / Русский",
     contactSent: "Дякуємо! Ваше повідомлення отримано. Ми зв'яжемося з вами найближчим часом.",
     donationSent: "Щиро дякуємо за вашу підтримку ({amount} EUR)! Нехай Господь благословить вас.",
-    forumTitle: "Форум громади",
+    forumTitle: "Свідчення",
     forumIntro: "Діліться свідченнями, проханнями про молитву та підтримуйте один одного.",
+    forumFormTitle: "Залиште своє свідчення",
     forumAuthorLabel: "Ім'я",
     forumTopicLabel: "Тема",
     forumMessageLabel: "Повідомлення",
@@ -131,6 +139,7 @@ const translations = {
     navAbout: "Über uns",
     navServices: "Gottesdienste",
     navSermons: "Predigten",
+    navTestimonials: "Zeugnisse",
     navContacts: "Kontakt",
     langLabel: "Sprache",
     heroTitle: "„Ich werde meine Kirche auf diesen Felsen bauen“",
@@ -144,6 +153,12 @@ const translations = {
     quote2Ref: "Matthäus 11:28",
     quote3: "„Jesus Christus ist derselbe gestern und heute und in Ewigkeit.“",
     quote3Ref: "Hebräer 13:8",
+    quote4: "„Der Herr ist mein Hirte; mir wird nichts mangeln.“",
+    quote4Ref: "Psalm 23:1",
+    quote5: "„Denn ich weiß wohl, was ich für Gedanken über euch habe, spricht der HERR, Gedanken des Friedens und nicht des Unheils...“",
+    quote5Ref: "Jeremia 29:11",
+    quote6: "„Ich vermag alles durch den, der mich mächtig macht, Christus.“",
+    quote6Ref: "Philipper 4:13",
     aboutTitle: "Über uns",
     aboutDesc: "Die Kirche „Auf dem Felsen“ ist ein Ort, an dem Menschen spirituelle Unterstützung, Gemeinschaft und Wachstum im Glauben finden. Wir streben danach, dass jeder die Liebe Gottes spürt und seinen Platz in der Gemeinde findet.",
     aboutHistoryTitle: "Geschichte unserer Kirche",
@@ -221,8 +236,9 @@ const translations = {
     footerLocale: "Website-Sprache: Ukrainisch / Deutsch / Russisch",
     contactSent: "Vielen Dank! Ihre Nachricht wurde gesendet. Wir melden uns in Kurze bei Ihnen.",
     donationSent: "Vielen Dank fur Ihre Unterstutzung ({amount} EUR)! Gott segne Sie.",
-    forumTitle: "Gemeindeforum",
+    forumTitle: "Zeugnisse",
     forumIntro: "Teilen Sie Zeugnisse, Gebetsanliegen und unterstützen Sie einander.",
+    forumFormTitle: "Teilen Sie Ihr Zeugnis",
     forumAuthorLabel: "Name",
     forumTopicLabel: "Thema",
     forumMessageLabel: "Nachricht",
@@ -240,6 +256,7 @@ const translations = {
     navAbout: "О нас",
     navServices: "Служения",
     navSermons: "Проповеди",
+    navTestimonials: "Свидетельства",
     navContacts: "Контакты",
     langLabel: "Язык",
     heroTitle: "«Создам Церковь Мою на этой скале»",
@@ -253,6 +270,12 @@ const translations = {
     quote2Ref: "Матфея 11:28",
     quote3: "«Иисус Христос вчера и сегодня и во веки Тот же!»",
     quote3Ref: "Евреям 13:8",
+    quote4: "«Господь — Пастырь мой; я ни в чем не буду нуждаться.»",
+    quote4Ref: "Псалом 23:1",
+    quote5: "«Ибо Я знаю намерения, какие имею о вас, говорит Господь, намерения во благо, а не на зло...»",
+    quote5Ref: "Иеремия 29:11",
+    quote6: "«Все могу в укрепляющем меня Христе.»",
+    quote6Ref: "Филиппийцам 4:13",
     aboutTitle: "О нас",
     aboutDesc: "Церковь «На скале» — это место, где люди находят духовную поддержку, общение и рост в вере. Мы стремимся к тому, чтобы каждый почувствовал любовь Божью и нашел свое место в общине.",
     aboutHistoryTitle: "История нашей церкви",
@@ -332,8 +355,9 @@ const translations = {
     footerLocale: "Язык сайта: Українська / Deutsch / Русский",
     contactSent: "Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.",
     donationSent: "Спасибо за вашу поддержку ({amount} EUR)! Да благословит вас Господь.",
-    forumTitle: "Форум общины",
+    forumTitle: "Свидетельства",
     forumIntro: "Делитесь свидетельствами, молитвенными нуждами и поддерживайте друг друга.",
+    forumFormTitle: "Оставьте свое свидетельство",
     forumAuthorLabel: "Имя",
     forumTopicLabel: "Тема",
     forumMessageLabel: "Сообщение",
@@ -386,8 +410,37 @@ const applyLanguage = (lang) => {
   langBtns.forEach(btn => {
     btn.classList.toggle("active", btn.dataset.lang === lang);
   });
+  renderBibleQuotes(lang);
   renderForumPosts();
 };
+
+function getRandomQuoteIndexes(count = 3) {
+  const indexes = Array.from({ length: 6 }, (_, i) => i + 1);
+  for (let i = indexes.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [indexes[i], indexes[j]] = [indexes[j], indexes[i]];
+  }
+  return indexes.slice(0, count);
+}
+
+function renderBibleQuotes(lang) {
+  const quoteCards = document.querySelectorAll('.quote-card');
+  const selectedIndexes = getRandomQuoteIndexes(quoteCards.length);
+  quoteCards.forEach((card, idx) => {
+    const quoteIndex = selectedIndexes[idx];
+    const quoteText = translations[lang][`quote${quoteIndex}`] || '';
+    const quoteRef = translations[lang][`quote${quoteIndex}Ref`] || '';
+    const quoteParagraph = card.querySelector('p');
+    const quoteSpan = card.querySelector('span');
+    if (quoteParagraph) {
+      quoteParagraph.textContent = quoteText;
+    }
+    if (quoteSpan) {
+      quoteSpan.textContent = quoteRef;
+    }
+  });
+}
+
 
 if (languageSelect) {
   languageSelect.addEventListener("change", (event) => {
