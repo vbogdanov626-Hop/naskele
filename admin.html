@@ -13,34 +13,48 @@
             max-width: 400px;
             margin: 100px auto;
             padding: 2rem;
-            background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 2px solid #e1e8ed;
         }
         .admin-panel {
             display: none;
             max-width: 1200px;
             margin: 2rem auto;
             padding: 2rem;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e1e8ed;
         }
         .admin-tabs {
             display: flex;
             gap: 1rem;
             margin-bottom: 2rem;
-            border-bottom: 1px solid rgba(44, 62, 80, 0.1);
+            border-bottom: 2px solid #e1e8ed;
+            padding-bottom: 1rem;
         }
         .admin-tab {
             padding: 0.75rem 1.5rem;
-            background: transparent;
-            border: none;
+            background: #f8f9fa;
+            border: 2px solid #e1e8ed;
             cursor: pointer;
-            font-weight: 500;
-            border-radius: var(--radius-sm);
+            font-weight: 600;
+            border-radius: 8px;
             transition: all 0.3s ease;
+            color: #495057;
+            font-size: 1rem;
+        }
+        .admin-tab:hover {
+            background: #e9ecef;
+            border-color: #d4af37;
         }
         .admin-tab.active {
-            background: var(--gold);
+            background: #d4af37;
             color: white;
+            border-color: #d4af37;
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
         }
         .admin-content {
             display: none;
@@ -49,20 +63,23 @@
             display: block;
         }
         .forum-item-admin {
-            background: var(--surface);
+            background: #f8f9fa;
             padding: 1.5rem;
-            border-radius: var(--radius-sm);
+            border-radius: 8px;
             margin-bottom: 1rem;
-            border: 1px solid rgba(44, 62, 80, 0.08);
+            border: 2px solid #e1e8ed;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
         .forum-item-admin h3 {
             margin: 0 0 0.5rem 0;
-            color: var(--accent);
+            color: #2c3e50;
+            font-size: 1.2rem;
         }
         .forum-meta-admin {
             margin: 0 0 1rem 0;
             font-size: 0.9rem;
-            color: var(--muted);
+            color: #6c757d;
+            font-weight: 500;
         }
         .admin-actions {
             display: flex;
@@ -70,11 +87,83 @@
             margin-top: 1rem;
         }
         .btn-danger {
-            background: #e74c3c;
+            background: #dc3545;
             color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
         }
         .btn-danger:hover {
-            background: #c0392b;
+            background: #c82333;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+        }
+        .btn-primary {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .btn-primary:hover {
+            background: #0056b3;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+        }
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-1px);
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e1e8ed;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
         }
     </style>
 </head>
