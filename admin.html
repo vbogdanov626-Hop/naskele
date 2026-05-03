@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель | На скелі</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .admin-login {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 2rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .admin-panel {
+            display: none;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+        .admin-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(44, 62, 80, 0.1);
+        }
+        .admin-tab {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            border-radius: var(--radius-sm);
+            transition: all 0.3s ease;
+        }
+        .admin-tab.active {
+            background: var(--gold);
+            color: white;
+        }
+        .admin-content {
+            display: none;
+        }
+        .admin-content.active {
+            display: block;
+        }
+        .forum-item-admin {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            margin-bottom: 1rem;
+            border: 1px solid rgba(44, 62, 80, 0.08);
+        }
+        .forum-item-admin h3 {
+            margin: 0 0 0.5rem 0;
+            color: var(--accent);
+        }
+        .forum-meta-admin {
+            margin: 0 0 1rem 0;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+        .admin-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a href="index.html" class="logo">
+                <img src="assets/church-logo.png" alt="Логотип На скелі" class="logo-image">
+                <span class="logo-text">На скелі</span>
+            </a>
+            <nav id="main-nav" class="main-nav">
+                <a href="index.html#home">Главная</a>
+                <a href="index.html#about">О нас</a>
+                <a href="index.html#services">Служения</a>
+                <a href="index.html#sermons">Проповеди</a>
+                <a href="index.html#testimonials">Свидетельства</a>
+                <a href="index.html#contacts">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="admin-login" id="adminLogin">
+            <h2>Вход в админ-панель</h2>
+            <form id="loginForm">
+                <label for="adminPassword">Пароль</label>
+                <input type="password" id="adminPassword" required>
+                <button type="submit" class="btn btn-primary">Войти</button>
+                <p class="form-note" id="loginNote"></p>
+            </form>
+        </div>
+
+        <div class="admin-panel" id="adminPanel">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h1>Админ-панель</h1>
+                <button onclick="logoutAdmin()" class="btn btn-secondary">Выйти</button>
+            </div>
+            <div class="admin-tabs">
+                <button class="admin-tab active" data-tab="testimonials">Свидетельства</button>
+                <button class="admin-tab" data-tab="sermons">Проповеди</button>
+                <button class="admin-tab" data-tab="quotes">Цитаты</button>
+                <button class="admin-tab" data-tab="about">О церкви</button>
+                <button class="admin-tab" data-tab="contacts">Контакты</button>
+                <button class="admin-tab" data-tab="settings">Настройки</button>
+            </div>
+
+            <div class="admin-content active" id="testimonialsTab">
+                <h2>Управление свидетельствами</h2>
+                <div id="adminForumList"></div>
+            </div>
+
+            <div class="admin-content" id="sermonsTab">
+                <h2>Управление проповедями</h2>
+                <div id="adminSermonsList"></div>
+                <button onclick="showAddSermonForm()" class="btn btn-primary" style="margin-top: 1rem;">Добавить проповедь</button>
+                <div id="addSermonForm" style="display: none; margin-top: 2rem; padding: 2rem; background: var(--surface); border-radius: var(--radius);">
+                    <h3>Добавить новую проповедь</h3>
+                    <form id="sermonForm">
+                        <label>Название проповеди</label>
+                        <input type="text" id="sermonTitle" required>
+                        <label>Дата</label>
+                        <input type="text" id="sermonDate" placeholder="DD.MM.YYYY" required>
+                        <label>Описание</label>
+                        <textarea id="sermonDesc" rows="4" required></textarea>
+                        <label>Ссылка на видео (опционально)</label>
+                        <input type="url" id="sermonVideo">
+                        <div style="margin-top: 1rem;">
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                            <button type="button" onclick="hideAddSermonForm()" class="btn btn-secondary">Отмена</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="admin-content" id="quotesTab">
+                <h2>Управление библейскими цитатами</h2>
+                <div id="adminQuotesList"></div>
+                <button onclick="showAddQuoteForm()" class="btn btn-primary" style="margin-top: 1rem;">Добавить цитату</button>
+                <div id="addQuoteForm" style="display: none; margin-top: 2rem; padding: 2rem; background: var(--surface); border-radius: var(--radius);">
+                    <h3>Добавить новую цитату</h3>
+                    <form id="quoteForm">
+                        <label>Текст цитаты</label>
+                        <textarea id="quoteText" rows="3" required></textarea>
+                        <label>Ссылка (книга, глава:стих)</label>
+                        <input type="text" id="quoteRef" placeholder="Книга 1:1" required>
+                        <div style="margin-top: 1rem;">
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                            <button type="button" onclick="hideAddQuoteForm()" class="btn btn-secondary">Отмена</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="admin-content" id="aboutTab">
+                <h2>Управление информацией о церкви</h2>
+                <div id="adminAboutContent"></div>
+            </div>
+
+            <div class="admin-content" id="contactsTab">
+                <h2>Управление контактной информацией</h2>
+                <div id="adminContactsContent"></div>
+            </div>
+
+            <div class="admin-content" id="settingsTab">
+                <h2>Настройки</h2>
+                <p>Настройки сайта будут доступны здесь.</p>
+            </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Admin panel functionality
+        const ADMIN_PASSWORD = "admin123"; // Change this to a secure password
+        const adminPanel = document.getElementById("adminPanel");
+        const loginForm = document.getElementById("loginForm");
+        const loginNote = document.getElementById("loginNote");
+        const adminForumList = document.getElementById("adminForumList");
+        const adminSermonsList = document.getElementById("adminSermonsList");
+        const adminQuotesList = document.getElementById("adminQuotesList");
+        const adminAboutContent = document.getElementById("adminAboutContent");
+        const adminContactsContent = document.getElementById("adminContactsContent");
+        const adminTabs = document.querySelectorAll(".admin-tab");
+        const adminContents = document.querySelectorAll(".admin-content");
+
+        // Check if admin is logged in
+        console.log("Checking admin login status:", localStorage.getItem("adminLoggedIn"));
+        if (localStorage.getItem("adminLoggedIn") === "true") {
+            showAdminPanel();
+        }
+
+        loginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const password = document.getElementById("adminPassword").value;
+            console.log("Login attempt with password:", password);
+            if (password === ADMIN_PASSWORD) {
+                console.log("Login successful");
+                localStorage.setItem("adminLoggedIn", "true");
+                showAdminPanel();
+            } else {
+                console.log("Login failed");
+                loginNote.textContent = "Неверный пароль";
+                loginNote.style.color = "#e74c3c";
+            }
+        });
+
+        function showAdminPanel() {
+            adminLogin.style.display = "none";
+            adminPanel.style.display = "block";
+            loadAdminForumPosts();
+            loadAdminSermons();
+            loadAdminQuotes();
+            loadAdminAbout();
+            loadAdminContacts();
+        }
+
+        function loadAdminForumPosts() {
+            const posts = JSON.parse(localStorage.getItem(FORUM_POSTS_KEY) || "[]").reverse();
+            if (posts.length === 0) {
+                adminForumList.innerHTML = "<p>Нет свидетельств для модерации.</p>";
+                return;
+            }
+            adminForumList.innerHTML = posts.map((post, index) => `
+                <div class="forum-item-admin">
+                    <h3>${post.topic}</h3>
+                    <p class="forum-meta-admin">Автор: ${post.author} | ${new Date(post.createdAt).toLocaleString()}</p>
+                    <p>${post.message}</p>
+                    <div class="admin-actions">
+                        <button class="btn btn-danger" onclick="deletePost(${posts.length - 1 - index})">Удалить</button>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        function loadAdminSermons() {
+            // Load sermons from translations or localStorage
+            const sermons = [
+                { title: "Жизнь на твердой скале", date: "14 апреля 2026", desc: "О том, как сохранять веру в испытаниях и доверять Богу в повседневной жизни.", video: "" },
+                { title: "Свет Христов во тьме", date: "7 апреля 2026", desc: "Вдохновение оставаться светом для мира, сохраняя мир и любовь в сердце.", video: "" },
+                { title: "Любовь как путь", date: "31 марта 2026", desc: "Исследование библейского понимания любви.", video: "" },
+                { title: "Молитва и сила веры", date: "24 марта 2026", desc: "Как молитва укрепляет нашу веру.", video: "" }
+            ];
+            adminSermonsList.innerHTML = sermons.map((sermon, index) => `
+                <div class="forum-item-admin">
+                    <h3>${sermon.title}</h3>
+                    <p class="forum-meta-admin">Дата: ${sermon.date}</p>
+                    <p>${sermon.desc}</p>
+                    <div class="admin-actions">
+                        <button class="btn" onclick="editSermon(${index})">Редактировать</button>
+                        <button class="btn btn-danger" onclick="deleteSermon(${index})">Удалить</button>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        function showAddSermonForm() {
+            document.getElementById("addSermonForm").style.display = "block";
+        }
+
+        function hideAddSermonForm() {
+            document.getElementById("addSermonForm").style.display = "none";
+            document.getElementById("sermonForm").reset();
+        }
+
+        function loadAdminQuotes() {
+            const quotes = [
+                { text: "«Господь — скала моя, и твердыня моя, и избавитель мой!»", ref: "Псалом 18:3" },
+                { text: "«Придите ко Мне, все труждающиеся и обремененные, и Я успокою вас!»", ref: "Матфея 11:28" },
+                { text: "«Иисус Христос вчера и сегодня и во веки Тот же!»", ref: "Евреям 13:8" },
+                { text: "«Господь — Пастырь мой; я ни в чем не буду нуждаться.»", ref: "Псалом 23:1" },
+                { text: "«Ибо Я знаю намерения, какие имею о вас, говорит Господь, намерения во благо, а не на зло...»", ref: "Иеремия 29:11" },
+                { text: "«Все могу в укрепляющем меня Христе.»", ref: "Филиппийцам 4:13" }
+            ];
+            adminQuotesList.innerHTML = quotes.map((quote, index) => `
+                <div class="forum-item-admin">
+                    <p><strong>${quote.text}</strong></p>
+                    <p class="forum-meta-admin">${quote.ref}</p>
+                    <div class="admin-actions">
+                        <button class="btn" onclick="editQuote(${index})">Редактировать</button>
+                        <button class="btn btn-danger" onclick="deleteQuote(${index})">Удалить</button>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        function showAddQuoteForm() {
+            document.getElementById("addQuoteForm").style.display = "block";
+        }
+
+        function hideAddQuoteForm() {
+            document.getElementById("addQuoteForm").style.display = "none";
+            document.getElementById("quoteForm").reset();
+        }
+
+        function loadAdminAbout() {
+            const savedAbout = JSON.parse(localStorage.getItem("adminAbout") || "{}");
+            adminAboutContent.innerHTML = `
+                <div style="display: grid; gap: 2rem;">
+                    <div>
+                        <h3>Описание церкви</h3>
+                        <textarea rows="4" id="aboutDesc" style="width: 100%;">${savedAbout.desc || translations.uk.aboutDesc}</textarea>
+                        <button class="btn btn-primary" style="margin-top: 0.5rem;" onclick="saveAbout('desc')">Сохранить</button>
+                    </div>
+                    <div>
+                        <h3>История церкви</h3>
+                        <textarea rows="6" id="aboutHistory" style="width: 100%;">${savedAbout.history || translations.uk.aboutHistoryText}</textarea>
+                        <button class="btn btn-primary" style="margin-top: 0.5rem;" onclick="saveAbout('history')">Сохранить</button>
+                    </div>
+                    <div>
+                        <h3>Миссия и ценности</h3>
+                        <textarea rows="4" id="aboutMission" style="width: 100%;">${savedAbout.mission || translations.uk.aboutMissionText}</textarea>
+                        <button class="btn btn-primary" style="margin-top: 0.5rem;" onclick="saveAbout('mission')">Сохранить</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function saveAbout(type) {
+            const savedAbout = JSON.parse(localStorage.getItem("adminAbout") || "{}");
+            if (type === 'desc') {
+                savedAbout.desc = document.getElementById("aboutDesc").value;
+            } else if (type === 'history') {
+                savedAbout.history = document.getElementById("aboutHistory").value;
+            } else if (type === 'mission') {
+                savedAbout.mission = document.getElementById("aboutMission").value;
+            }
+            localStorage.setItem("adminAbout", JSON.stringify(savedAbout));
+            alert("Изменения сохранены!");
+            // Refresh main page if it's open
+            if (window.opener) {
+                window.opener.location.reload();
+            }
+        }
+
+        function loadAdminContacts() {
+            const savedContacts = JSON.parse(localStorage.getItem("adminContacts") || "{}");
+            adminContactsContent.innerHTML = `
+                <div style="display: grid; gap: 2rem; max-width: 600px;">
+                    <div>
+                        <label>Адрес</label>
+                        <input type="text" id="contactAddress" value="${savedContacts.address || 'Niemeierstraße 9, 32758 Detmold, Germany'}" style="width: 100%;">
+                    </div>
+                    <div>
+                        <label>Email</label>
+                        <input type="email" id="contactEmail" value="${savedContacts.email || 'info@naskeli.org'}" style="width: 100%;">
+                    </div>
+                    <div>
+                        <label>Телефон</label>
+                        <input type="tel" id="contactPhone" value="${savedContacts.phone || '+4915110057600'}" style="width: 100%;">
+                    </div>
+                    <div>
+                        <label>Пастор</label>
+                        <input type="text" id="contactPastor" value="${savedContacts.pastor || 'Александр'}" style="width: 100%;">
+                    </div>
+                    <button class="btn btn-primary" style="margin-top: 1rem;" onclick="saveContacts()">Сохранить изменения</button>
+                </div>
+            `;
+        }
+
+        function saveContacts() {
+            const contacts = {
+                address: document.getElementById("contactAddress").value,
+                email: document.getElementById("contactEmail").value,
+                phone: document.getElementById("contactPhone").value,
+                pastor: document.getElementById("contactPastor").value
+            };
+            localStorage.setItem("adminContacts", JSON.stringify(contacts));
+            alert("Контактная информация сохранена!");
+            // Refresh main page if it's open
+            if (window.opener) {
+                window.opener.location.reload();
+            }
+        }
+
+        // Tab switching
+        adminTabs.forEach(tab => {
+            tab.addEventListener("click", () => {
+                adminTabs.forEach(t => t.classList.remove("active"));
+                adminContents.forEach(c => c.classList.remove("active"));
+                tab.classList.add("active");
+                document.getElementById(tab.dataset.tab + "Tab").classList.add("active");
+            });
+        });
+
+        function editSermon(index) {
+            alert("Функция редактирования проповеди будет реализована");
+        }
+
+        function deleteSermon(index) {
+            if (confirm("Вы уверены, что хотите удалить эту проповедь?")) {
+                alert("Функция удаления проповеди будет реализована");
+            }
+        }
+
+        function editQuote(index) {
+            alert("Функция редактирования цитаты будет реализована");
+        }
+
+        function deleteQuote(index) {
+            if (confirm("Вы уверены, что хотите удалить эту цитату?")) {
+                alert("Функция удаления цитаты будет реализована");
+            }
+        }
+    </script>
+</body>
+</html></content>
+<parameter name="filePath">c:\Users\lenaa\Desktop\cursor\admin.html
