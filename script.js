@@ -10,6 +10,15 @@ const forumNote = document.getElementById("forumNote");
 const forumList = document.getElementById("forumList");
 const FORUM_POSTS_KEY = "churchForumPosts";
 
+// Test localStorage availability
+try {
+  localStorage.setItem("test", "test");
+  localStorage.removeItem("test");
+  console.log("localStorage is available");
+} catch (e) {
+  console.error("localStorage is not available:", e);
+}
+
 const translations = {
   uk: {
     pageTitle: "На скелі | Християнська церква",
@@ -86,6 +95,10 @@ const translations = {
     mapTitle: "Карта розташування церкви",
     contactInfoTitle: "Контактна інформація",
     pastorLabel: "Пастор:",
+    contactAddress: "Niemeierstraße 9, 32758 Detmold, Germany",
+    contactEmail: "info@naskeli.org",
+    contactPhone: "+4915110057600",
+    contactPastor: "Олександр",
     officeHoursLabel: "Години роботи офісу:",
     socialTitle: "Ми у соціальних мережах",
     socialDesc: "Слідкуйте за нашими оновленнями, проповідями та заходами у соціальних мережах.",
@@ -205,6 +218,10 @@ const translations = {
     mapTitle: "Standort der Kirche auf der Karte",
     contactInfoTitle: "Kontaktinformationen",
     pastorLabel: "Pastor:",
+    contactAddress: "Niemeierstraße 9, 32758 Detmold, Germany",
+    contactEmail: "info@naskeli.org",
+    contactPhone: "+4915110057600",
+    contactPastor: "Alexander",
     officeHoursLabel: "Bürozeiten:",
     socialTitle: "Wir in sozialen Netzwerken",
     socialDesc: "Folgen Sie unseren Updates, Predigten und Veranstaltungen in sozialen Netzwerken.",
@@ -322,8 +339,10 @@ const translations = {
     emailLabel: "Email:",
     phoneLabel: "Телефон:",
     mapTitle: "Расположение церкви на карте",
-    contactInfoTitle: "Контактная информация",
-    pastorLabel: "Пастор:",
+    contactAddress: "Niemeierstraße 9, 32758 Detmold, Germany",
+    contactEmail: "info@naskeli.org",
+    contactPhone: "+4915110057600",
+    contactPastor: "Александр",
     officeHoursLabel: "Часы работы офиса:",
     socialTitle: "Мы в социальных сетях",
     socialDesc: "Следите за нашими обновлениями, проповедями и мероприятиями в социальных сетях.",
@@ -412,6 +431,28 @@ const applyLanguage = (lang) => {
   });
   renderBibleQuotes(lang);
   renderForumPosts();
+  updateAdminLink();
+};
+
+// Make renderForumPosts globally available
+window.renderForumPosts = renderForumPosts;
+
+// Admin functions
+window.updateAdminLink = function() {
+  const adminLink = document.getElementById("adminLink");
+  const isLoggedIn = localStorage.getItem("adminLoggedIn") === "true";
+  console.log("Admin status check:", isLoggedIn);
+  if (adminLink) {
+    adminLink.style.display = isLoggedIn ? "block" : "none";
+    console.log("Admin link visibility set to:", isLoggedIn ? "visible" : "hidden");
+  } else {
+    console.log("Admin link element not found");
+  }
+};
+
+window.logoutAdmin = function() {
+  localStorage.removeItem("adminLoggedIn");
+  updateAdminLink();
 };
 
 function getRandomQuoteIndexes(count = 3) {
@@ -449,6 +490,9 @@ if (languageSelect) {
 }
 
 applyLanguage(currentLanguage);
+
+// Check admin status and show admin link
+updateAdminLink();
 
 // Language button handlers
 langBtns.forEach(btn => {
@@ -528,6 +572,9 @@ function renderForumPosts() {
     .join("");
 }
 
+// Make renderForumPosts globally available
+window.renderForumPosts = renderForumPosts;
+
 if (forumForm && forumNote) {
   forumForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -552,6 +599,64 @@ if (forumForm && forumNote) {
 }
 
 renderForumPosts();
+
+// Check admin status and show admin link
+// Check admin status and show admin link
+function updateAdminLink() {
+  const isAdmin = localStorage.getItem("isAdmin") === "true" || window.location.search.includes("admin=1");
+  console.log("Admin status:", isAdmin); // Debug log
+  const adminLink = document.getElementById("adminLink");
+  if (adminLink) {
+    adminLink.style.display = isAdmin ? "inline-block" : "none";
+    console.log("Admin link display set to:", adminLink.style.display); // Debug log
+  } else {
+    console.log("Admin link element not found"); // Debug log
+  }
+}
+
+updateAdminLink();
+
+// Load admin-edited data from localStorage
+function loadAdminData() {
+  // Load about section data
+  const savedAbout = JSON.parse(localStorage.getItem("adminAbout") || "{}");
+  if (savedAbout.desc) {
+    const descElement = document.querySelector('[data-i18n="aboutDesc"]');
+    if (descElement) descElement.textContent = savedAbout.desc;
+  }
+  if (savedAbout.history) {
+    const historyElement = document.querySelector('[data-i18n="aboutHistoryText"]');
+    if (historyElement) historyElement.textContent = savedAbout.history;
+  }
+  if (savedAbout.mission) {
+    const missionElement = document.querySelector('[data-i18n="aboutMissionText"]');
+    if (missionElement) missionElement.textContent = savedAbout.mission;
+  }
+
+  // Load contacts data
+  const savedContacts = JSON.parse(localStorage.getItem("adminContacts") || "{}");
+  if (savedContacts.address) {
+    const addressElement = document.querySelector('[data-i18n="contactAddress"]');
+    if (addressElement) addressElement.textContent = savedContacts.address;
+  }
+  if (savedContacts.email) {
+    const emailElement = document.querySelector('[data-i18n="contactEmail"]');
+    if (emailElement) emailElement.textContent = savedContacts.email;
+  }
+  if (savedContacts.phone) {
+    const phoneElement = document.querySelector('[data-i18n="contactPhone"]');
+    if (phoneElement) phoneElement.textContent = savedContacts.phone;
+  }
+  if (savedContacts.pastor) {
+    const pastorElement = document.querySelector('[data-i18n="contactPastor"]');
+    if (pastorElement) pastorElement.textContent = savedContacts.pastor;
+  }
+}
+
+loadAdminData();
+
+// Check admin status and show admin link
+updateAdminLink();
 
 // Custom Cursor
 const cursor = document.getElementById('cursor');

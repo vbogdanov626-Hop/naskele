@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест админ-панели | На скелі</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem; }
+        .test-result { padding: 1rem; margin: 1rem 0; border-radius: 4px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+    </style>
+</head>
+<body>
+    <h1>Тест админ-панели</h1>
+
+    <div id="localStorageTest" class="test-result">
+        <h3>Проверка localStorage</h3>
+        <p id="lsResult">Проверяем...</p>
+    </div>
+
+    <div id="adminStatusTest" class="test-result">
+        <h3>Статус админа</h3>
+        <p id="adminResult">Проверяем...</p>
+    </div>
+
+    <div id="adminLoginTest" class="test-result">
+        <h3>Вход в админ-панель</h3>
+        <form id="loginTestForm">
+            <label for="testPassword">Пароль (admin123):</label>
+            <input type="password" id="testPassword">
+            <button type="submit">Войти</button>
+        </form>
+        <p id="loginResult"></p>
+    </div>
+
+    <div id="adminLinkTest" class="test-result">
+        <h3>Ссылка на админ-панель</h3>
+        <p id="linkResult">Проверяем...</p>
+        <a href="admin.html" id="adminLinkTest">Перейти в админ-панель</a>
+    </div>
+
+    <script>
+        // Test localStorage
+        function testLocalStorage() {
+            try {
+                localStorage.setItem("test", "test");
+                localStorage.removeItem("test");
+                document.getElementById("lsResult").textContent = "localStorage доступен";
+                document.getElementById("localStorageTest").className = "test-result success";
+                return true;
+            } catch (e) {
+                document.getElementById("lsResult").textContent = "localStorage недоступен: " + e.message;
+                document.getElementById("localStorageTest").className = "test-result error";
+                return false;
+            }
+        }
+
+        // Test admin status
+        function testAdminStatus() {
+            const isAdmin = localStorage.getItem("isAdmin") === "true";
+            document.getElementById("adminResult").textContent = isAdmin ? "Админ авторизован" : "Админ не авторизован";
+            document.getElementById("adminStatusTest").className = "test-result " + (isAdmin ? "success" : "info");
+        }
+
+        // Test admin link visibility
+        function testAdminLink() {
+            const isAdmin = localStorage.getItem("isAdmin") === "true";
+            const link = document.getElementById("adminLinkTest");
+            link.style.display = isAdmin ? "inline" : "none";
+            document.getElementById("linkResult").textContent = isAdmin ? "Ссылка видна" : "Ссылка скрыта";
+            document.getElementById("adminLinkTest").className = "test-result " + (isAdmin ? "success" : "info");
+        }
+
+        // Login test
+        document.getElementById("loginTestForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const password = document.getElementById("testPassword").value;
+            if (password === "admin123") {
+                localStorage.setItem("isAdmin", "true");
+                document.getElementById("loginResult").textContent = "Вход выполнен успешно!";
+                document.getElementById("loginResult").style.color = "green";
+                testAdminStatus();
+                testAdminLink();
+            } else {
+                document.getElementById("loginResult").textContent = "Неверный пароль";
+                document.getElementById("loginResult").style.color = "red";
+            }
+        });
+
+        // Run tests
+        testLocalStorage();
+        testAdminStatus();
+        testAdminLink();
+    </script>
+</body>
+</html></content>
+<parameter name="filePath">c:\Users\lenaa\Desktop\cursor\admin-test.html

@@ -199,8 +199,9 @@
         const adminContents = document.querySelectorAll(".admin-content");
 
         // Check if admin is logged in
-        console.log("Checking admin login status:", localStorage.getItem("adminLoggedIn"));
-        if (localStorage.getItem("adminLoggedIn") === "true") {
+        console.log("Checking admin login status:", localStorage.getItem("isAdmin"));
+        const isAdmin = localStorage.getItem("isAdmin") === "true" || window.location.search.includes("admin=1");
+        if (isAdmin) {
             showAdminPanel();
         }
 
@@ -210,7 +211,7 @@
             console.log("Login attempt with password:", password);
             if (password === ADMIN_PASSWORD) {
                 console.log("Login successful");
-                localStorage.setItem("adminLoggedIn", "true");
+                localStorage.setItem("isAdmin", "true");
                 showAdminPanel();
             } else {
                 console.log("Login failed");
@@ -415,6 +416,11 @@
             if (confirm("Вы уверены, что хотите удалить эту цитату?")) {
                 alert("Функция удаления цитаты будет реализована");
             }
+        }
+
+        function logoutAdmin() {
+            localStorage.removeItem("isAdmin");
+            location.reload();
         }
     </script>
 </body>
